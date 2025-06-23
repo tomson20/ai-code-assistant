@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Code Agent</title>
+  <style>
+    body { font-family: Arial; padding: 20px; background: #f9f9f9; }
+    textarea, input, select { width: 100%; padding: 10px; margin-bottom: 10px; }
+    pre { background: #272822; color: #f8f8f2; padding: 10px; border-radius: 5px; overflow-x: auto; }
+  </style>
+</head>
+<body>
+  <h1>🧠 AI Code Agent</h1>
+
+  <form method="POST">
+    <label><strong>Enter your task:</strong></label><br>
+    <input type="text" name="task" placeholder="e.g., create a function that adds two numbers" required><br><br>
+
+    <label><strong>Function name to test (optional):</strong></label><br>
+    <input type="text" name="function_name" placeholder="e.g., add_numbers"><br><br>
+
+    <label><strong>Github Repo (e.g., username/repo):</strong></label><br>
+    <input type="text" name="repo"><br><br>
+
+    <input type="checkbox" name="push_to_github"> Push to GitHub<br><br>
+
+    <button type="submit" style="padding: 10px 20px;">Generate</button>
+  </form>
+
+  {% if code %}
+    <h2>📄 Generated Code</h2>
+    <pre>{{ code }}</pre>
+  {% endif %}
+
+  {% if tests %}
+    <h2>🧪 Generated Tests</h2>
+    <pre>{{ tests }}</pre>
+  {% endif %}
+
+  {% if docs %}
+    <h2>📚 Documentation</h2>
+    <pre>{{ docs }}</pre>
+  {% endif %}
+
+  {% if github_result %}
+    <h2>🔗 GitHub Result</h2>
+    <p>{{ github_result }}</p>
+  {% endif %}
+</body>
+</html>

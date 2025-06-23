@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Agent History</title>
+  <style>
+    body { font-family: Arial; padding: 20px; background: #f9f9f9; }
+    .entry { border-bottom: 1px solid #ccc; margin-bottom: 20px; padding-bottom: 10px; }
+    pre { background: #272822; color: #f8f8f2; padding: 10px; border-radius: 5px; overflow-x: auto; }
+  </style>
+</head>
+<body>
+  <h1>🧠 Agent Task History</h1>
+
+  {% for entry in history %}
+    <div class="entry">
+      <strong>🕒 {{ entry.timestamp }}</strong><br>
+      <strong>📝 Task:</strong> {{ entry.task }}<br><br>
+
+      <strong>📄 Generated Code:</strong><br>
+      <pre>{{ entry.code }}</pre>
+
+      {% if entry.tests %}
+        <strong>🧪 Generated Tests:</strong><br>
+        <pre>{{ entry.tests }}</pre>
+      {% endif %}
+
+      {% if entry.docs %}
+        <strong>📚 Documentation:</strong><br>
+        <pre>{{ entry.docs }}</pre>
+      {% endif %}
+    </div>
+  {% endfor %}
+</body>
+</html>
