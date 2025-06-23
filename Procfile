@@ -1,1 +1,1 @@
-gunicorn ai-code-assistant.main:app
+gunicorn main:app
